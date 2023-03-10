@@ -63,30 +63,30 @@ public class CustomListTest {
         //lastly check if it equals to the value of contains() method
     }
 
-//    @Test
-//    void testDelete(){
-//        CityList cityList = mockCityList();
-//        assertEquals(1, cityList.getCities().size());
-//        City city = new City("Seoul", "Gyeonggi");
-//        cityList.add(city); //add the new city value to the citylist
-//        assertEquals(2, cityList.getCities().size()); //check if new city is successfully added
-//        cityList.delete(city); //delete the new element
-//        assertEquals(1, cityList.getCities().size()); //check if theres only 1 value left
-//        assertFalse(cityList.hasCity(city)); //check if the citylist doesnt contain the new city anymore
-//        assertEquals(cityList.hasCity(city), cityList.getCities().contains(city));
-//        //lastly check if it equals to the value of contains() method
-//    }
-//
-//    @Test
-//    void testDeleteException() {
-//        CityList cityList = mockCityList();
-//        City city = new City("Yellowknife", "Northwest Territories");
-//        cityList.add(city); //add the new value inside the citylist
-//        cityList.delete(city); //remove the citylist
-//        assertThrows( IllegalArgumentException.class, () -> {
-//            cityList.delete(city); }); //remove it agian so that it throws an exception
-//    }
-//
+    @Test
+    void testDelete(){
+        CustomList cityList = mockCityList();
+        assertEquals(1, cityList.getCities().size());
+        City city = new City("Seoul", "Gyeonggi");
+        cityList.add(city); //add the new city value to the citylist
+        assertEquals(2, cityList.getCities().size()); //check if new city is successfully added
+        cityList.delete(city); //delete the new element
+        assertEquals(1, cityList.getCities().size()); //check if theres only 1 value left
+        assertFalse(cityList.hasCity(city)); //check if the citylist doesnt contain the new city anymore
+        assertEquals(cityList.hasCity(city), cityList.getCities().contains(city));
+        //lastly check if it equals to the value of contains() method
+    }
+
+    @Test
+    void testDeleteException() {
+        CustomList cityList = mockCityList();
+        City city = new City("Yellowknife", "Northwest Territories");
+        cityList.add(city); //add the new value inside the citylist
+        cityList.delete(city); //remove the citylist
+        assertThrows( IllegalArgumentException.class, () -> {
+            cityList.delete(city); }); //remove it agian so that it throws an exception
+    }
+
 //    @Test
 //    void countCities() {
 //        CityList cityList = mockCityList();
