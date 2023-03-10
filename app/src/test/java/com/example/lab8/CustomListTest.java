@@ -1,47 +1,53 @@
 package com.example.lab8;
 
+import static com.example.lab8.CustomList.cities;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 //import org.testng.annotations.Test;
+import android.content.Context;
+
 import com.example.lab8.City;
 
 import org.junit.jupiter.api.Test;
 
+import java.sql.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CustomListTest {
     private CustomList mockCityList() {
-        CustomList cityList = new CustomList();
+        ArrayList<City> cities = new ArrayList();
+        Context context = null;
+        CustomList cityList = new CustomList(mockCityList().getContext(), cities);
         CustomList.addCity(mockCity());
         return cityList;
     }
     private City mockCity() {
         return new City("Edmonton", "Alberta");
     }
-    //test add method using unit test
-//    @Test
-//    void testAdd(){
-//        CityList cityList = mockCityList();
-//        assertEquals(1, cityList.getCities().size());
-//        City city = new City("Regina", "Saskatchewan");
-//        cityList.add(city);
-//        assertEquals(2, cityList.getCities().size());
-//        assertTrue(cityList.getCities().contains(city));
-//    }
-//    @Test
-//    void testAddException() {
-//        CityList cityList = mockCityList();
-//        City city = new City("Yellowknife", "Northwest Territories");
-//        cityList.add(city);
-//        assertThrows( IllegalArgumentException.class, () -> {
-//            cityList.add(city); });
-//    }
+    @Test
+    void testAdd(){
+        CustomList cityList = mockCityList();
+        assertEquals(1, cityList.getCities().size());
+        City city = new City("Regina", "Saskatchewan");
+        cityList.add(city);
+        assertEquals(2, cityList.getCities().size());
+        assertTrue(cityList.getCities().contains(city));
+    }
+    @Test
+    void testAddException() {
+        CustomList cityList = mockCityList();
+        City city = new City("Yellowknife", "Northwest Territories");
+        cityList.add(city);
+        assertThrows( IllegalArgumentException.class, () -> {
+            cityList.add(city); });
+    }
 //    @Test
 //    void testGetCities() {
-//        CityList cityList = mockCityList();
+//        CustomList cityList = mockCityList();
 //        assertEquals(0,
 //                mockCity().compareTo(cityList.getCities().get(0)));
 //        City city = new City("Charlottetown", "Prince Edward Island");
