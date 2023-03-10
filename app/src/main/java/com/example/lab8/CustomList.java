@@ -11,10 +11,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class CustomList extends ArrayAdapter<City> {
 
-    private ArrayList<City> cities;
+    private static ArrayList<City> cities;
     private Context context;
 
     public CustomList(Context context, ArrayList<City> cities) {
@@ -22,6 +24,7 @@ public class CustomList extends ArrayAdapter<City> {
         this.cities = cities;
         this.context = context;
     }
+
 
     @NonNull
     @Override
@@ -49,8 +52,32 @@ public class CustomList extends ArrayAdapter<City> {
         return cities.size();
     }
 
-    public void addCity(City city){
+    public static void addCity(City city){
+        if (cities.contains(city)){
+            throw new IllegalArgumentException();
+        }
+        cities.add(city);
 
+    }
+    public List getCities(){
+        List list = cities;
+        Collections.sort(list);
+        return list;
+    }
+    public boolean hasCity(City city){
+        if (cities.contains(city)){
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public void delete(City city){
+        if (cities.contains(city)){
+            cities.remove(city);
+        }
+        else {
+            throw new IllegalArgumentException();
+        }
     }
 
 }
