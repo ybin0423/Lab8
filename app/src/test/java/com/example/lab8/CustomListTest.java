@@ -87,15 +87,15 @@ public class CustomListTest {
             cityList.delete(city); }); //remove it agian so that it throws an exception
     }
 
-//    @Test
-//    void countCities() {
-//        CityList cityList = mockCityList();
-//        City city = new City("Seoul", "Gyeonggi");
-//        cityList.add(city); //add the new city value to the citylist
-//        assertEquals(2, cityList.countCities()); //check if the countCities return the correct value
-//        assertEquals(cityList.countCities(), cityList.getCities().size());
-//        //check if the countCities has the same value with getCities().size()
-//        //which also counts the elements inside the cityList
-//    }
+    @Test
+    void countCities() {
+        CustomList cityList = mockCityList();
+        City city = new City("Seoul", "Gyeonggi");
+        cityList.add(city); //add the new city value to the citylist
+        assertEquals(2, cityList.getCount()); //check if the countCities return the correct value
+        assertEquals(cityList.getCount(), cityList.getCities().size());
+        //check if the countCities has the same value with getCities().size()
+        //which also counts the elements inside the cityList
+    }
 }
 
